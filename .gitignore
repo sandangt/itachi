@@ -7,15 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-pnpm-lock.yaml
-yarn.lock
-
 node_modules/
+.output/
 dist/
-build/
-*.local
-.vscode/
-.idea/
+stats.html
+stats-*.json
+.wxt
 
-*~
-*.swp
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

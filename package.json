@@ -1,45 +1,37 @@
 {
   "name": "itachi",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
+  "description": "manifest.json description",
   "private": true,
-  "main": "index.js",
-  "engines": {
-    "node": ">=20.15.0"
-  },
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "format": "prettier --write 'src/**/*.{html,js,jsx,ts,tsx}'",
-    "lint": "eslint .",
-    "clean": "rm -rf node_modules dist",
-    "dev": "vite",
-    "build": "tsc -b && vite build"
+    "clean": "rm -rf node_modules dist .wxt",
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox",
+    "compile": "tsc --noEmit",
+    "postinstall": "wxt prepare"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.1",
+    "clsx": "^2.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.1",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^4.0.1"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.299",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
-    "@vitejs/plugin-react-swc": "^3.7.2",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9.19.0",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-react-refresh": "^0.4.18",
-    "globals": "^15.14.0",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "@wxt-dev/module-react": "^1.1.2",
     "prettier": "^3.4.2",
-    "typescript": "^5.7.3",
-    "vite": "^6.0.11",
-    "vite-plugin-node-polyfills": "^0.23.0"
-  },
-  "dependencies": {
-    "@tailwindcss/postcss": "^4.0.0",
-    "@types/node": "^22.12.0",
-    "postcss": "^8.5.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwindcss": "^4.0.0",
-    "vite-plugin-static-copy": "^2.2.0"
+    "typescript": "^5.6.3",
+    "wxt": "^0.19.13"
   }
 }
