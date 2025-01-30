@@ -5,7 +5,7 @@ import { defineConfig } from 'wxt'
 export default defineConfig({
   srcDir: 'src',
   outDir: 'dist',
-  extensionApi: 'chrome',
+  extensionApi: 'webextension-polyfill',
   modules: ['@wxt-dev/module-react'],
   manifest: {
     name: 'Itachi',

@@ -6,21 +6,22 @@ import { DEFAULT_TOGGLED_BACKGROUND_COLOR } from '@/constants'
 export const EntryApp = () => {
   const [color, setColor] = useState(DEFAULT_TOGGLED_BACKGROUND_COLOR)
   useEffect(() => {
-    browser.storage.sync.get('preferredColor', (data) => {
+    const innerFunc = async () => {
+      const data = await browser.storage.sync.get('preferredColor')
       if (data.preferredColor) {
         setColor(data.preferredColor)
       }
-    })
+    }
+    innerFunc()
   }, [])
-  const saveColor = () => {
-    browser.storage.sync.set({ preferredColor: color }, () => {
-      toast.success('Color preference saved!', { duration: 2000 })
-    })
+  const saveColor = async () => {
+    await browser.storage.sync.set({ preferredColor: color })
+    toast.success('Color preference saved!', { duration: 2000 })
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <Toaster position="top-right" reverseOrder={false} />
+    <div className="flex flex-col items-center justify-center bg-gray-100 w-screen h-screen">
+      <Toaster position="bottom-center" reverseOrder={false} />
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <h2 className="text-xl font-bold mb-4">Choose Toggle Color</h2>
         <select

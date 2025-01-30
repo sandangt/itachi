@@ -7,12 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+pnpm-lock.yaml
+
 node_modules/
 .output/
 dist/
 stats.html
 stats-*.json
 .wxt
+
 
 # Editor directories and files
 .vscode/*

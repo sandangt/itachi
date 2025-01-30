@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { TOGGLE_EVENT_ON, TOGGLE_EVENT_OFF } from '@/constants'
+import { Button } from '@/components/ui/button'
 
 export const EntryApp = () => {
   const [isColor, setIsColor] = useState(false)
@@ -17,12 +18,10 @@ export const EntryApp = () => {
 
   return (
     <div className="p-4 w-48 text-center">
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        onClick={onToggleBtn}
+      <Button variant="outline" onClick={onToggleBtn}
       >
-        {isColor ? 'Reset Color' : 'Make Orange'}
-      </button>
+        {isColor ? 'Reset Color' : 'Make Colorful'}
+      </Button>
     </div>
   )
 }
