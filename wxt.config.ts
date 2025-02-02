@@ -10,7 +10,7 @@ export default defineConfig({
   manifest: {
     name: 'Itachi',
     description: 'This is itachi chrome extension',
-    permissions: ['activeTab', 'scripting', 'storage'],
+    permissions: ['activeTab', 'scripting', 'storage', 'tabs'],
     action: {},
   },
   vite: () => ({

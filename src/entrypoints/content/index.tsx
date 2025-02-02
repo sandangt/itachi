@@ -1,25 +1,36 @@
 import { createRoot } from 'react-dom/client'
+import { StrictMode } from 'react'
 
-import '@/assets/global.css'
 import { EntryApp } from './app'
+import '@/assets/global.css'
 
 export default defineContentScript({
-  matches: ['<all_urls>'],
-  main(ctx) {
-    const ui = createIntegratedUi(ctx, {
+  matches: ['https://*.facebook.com/*', 'https://*.blank.org/*'],
+  cssInjectionMode: 'ui',
+  async main(ctx) {
+    const ui = await createShadowRootUi(ctx, {
+      name: 'itachi-modal',
       position: 'inline',
-      anchor: 'body',
+      anchor: `a[href="${document.URL.toString()}"][role="link"]`,
+      append: 'after',
       onMount: (container) => {
-        const root = createRoot(container)
-        root.render(<EntryApp />)
-        return root
+        const wrapper = document.createElement('div')
+        container.append(wrapper)
+        const root = createRoot(wrapper)
+        root.render(<App />)
+        return { root, wrapper }
       },
-      onRemove: (root) => {
-        if (root) root.unmount()
-      },
+      // onRemove: (elements) => {
+      //   elements?.root.unmount()
+      //   elements?.wrapper.remove()
+      // },
     })
-
-    // Call mount to add the UI to the DOM
-    ui.mount()
+    ui.autoMount()
   },
 })
+
+const App = () => (
+  <StrictMode>
+    <EntryApp />
+  </StrictMode>
+)

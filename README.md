@@ -16,4 +16,6 @@
 
 - Run `pnpm dev`
 
-- Any change will be load automatically
+- Go to browser's manage extension settings, add new extension by pointing to the `dist` directory
+
+- Any change will be loaded automatically
